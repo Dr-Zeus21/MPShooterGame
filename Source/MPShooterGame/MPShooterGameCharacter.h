@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
+
 #include "MPShooterGameCharacter.generated.h"
 
 class USpringArmComponent;
@@ -70,13 +71,9 @@ public:
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
-	UFUNCTION(BlueprintCallable)
-	void OpenLobby();
+public: 
 
-	UFUNCTION(BlueprintCallable)
-	void CallOpenLevel(const FString& Address);
-
-	UFUNCTION(BlueprintCallable)
-	void CallClientTravel(const FString& Address);
+	// Pointer to the online session interface
+	TSharedPtr<class IOnlineSession, ESPMode::ThreadSafe> OnlineSessionInterface;
 };
 
